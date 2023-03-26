@@ -114,7 +114,11 @@ function Result() {
   }, [shadowTrigger]);
 
   return (
-    <Wrapper theme={theme}>
+    <Wrapper
+      theme={theme}
+      aria-live={"polite"}
+      aria-label={`Calculation result: ${entry.join("")}`}
+    >
       <CalculationProgress theme={theme}>
         {storage > 0 ? (
           <>

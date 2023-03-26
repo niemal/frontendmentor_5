@@ -5,6 +5,7 @@ import ThemeSwitch from "../ThemeSwitch";
 import Result from "../Result";
 import { useState, useContext, useEffect } from "react";
 import { QUERIES } from "../constants";
+import ClickableWrapper from "../ClickableWrapper";
 
 const Wrapper = styled.div`
   display: flex;
@@ -77,7 +78,9 @@ function Calculator() {
   return (
     <Wrapper>
       <TopRow>
-        <Name theme={theme}>calc</Name>
+        <Name theme={theme} aria-label={"Application name: calc"}>
+          calc
+        </Name>
         <ThemeSwitch />
       </TopRow>
 
@@ -85,7 +88,7 @@ function Calculator() {
 
       <Keypad theme={theme}>
         <ButtonRow>
-          <Button
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -93,9 +96,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            7
-          </Button>
-          <Button
+            <Button>7</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -103,9 +107,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            8
-          </Button>
-          <Button
+            <Button>8</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -113,9 +118,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            9
-          </Button>
-          <Button
+            <Button>9</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={1}
             onClick={() => {
               const tmp = [...entry];
@@ -126,11 +132,12 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            DEL
-          </Button>
+            <Button>DEL</Button>
+          </ClickableWrapper>
         </ButtonRow>
+
         <ButtonRow>
-          <Button
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -138,9 +145,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            4
-          </Button>
-          <Button
+            <Button>4</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -148,9 +156,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            5
-          </Button>
-          <Button
+            <Button>5</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -158,9 +167,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            6
-          </Button>
-          <Button
+            <Button>6</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               setMode("addition");
@@ -169,11 +179,12 @@ function Calculator() {
               setNewOne(true);
             }}
           >
-            +
-          </Button>
+            <Button>+</Button>
+          </ClickableWrapper>
         </ButtonRow>
+
         <ButtonRow>
-          <Button
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -181,9 +192,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            1
-          </Button>
-          <Button
+            <Button>1</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -191,9 +203,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            2
-          </Button>
-          <Button
+            <Button>2</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -201,9 +214,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            3
-          </Button>
-          <Button
+            <Button>3</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               setMode("subtraction");
@@ -212,11 +226,12 @@ function Calculator() {
               setNewOne(true);
             }}
           >
-            -
-          </Button>
+            <Button>-</Button>
+          </ClickableWrapper>
         </ButtonRow>
+
         <ButtonRow>
-          <Button
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               const tmp = [...entry];
@@ -224,9 +239,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            .
-          </Button>
-          <Button
+            <Button>.</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               if (entry.length > 0 && entry[0] === "0") {
@@ -238,9 +254,10 @@ function Calculator() {
               setEntry(tmp);
             }}
           >
-            0
-          </Button>
-          <Button
+            <Button>0</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               setMode("division");
@@ -248,9 +265,10 @@ function Calculator() {
               setEntry(["0"]);
             }}
           >
-            /
-          </Button>
-          <Button
+            <Button>{`/`}</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={0}
             onClick={() => {
               setMode("multiplication");
@@ -258,11 +276,11 @@ function Calculator() {
               setEntry(["0"]);
             }}
           >
-            x
-          </Button>
+            <Button>x</Button>
+          </ClickableWrapper>
         </ButtonRow>
         <ButtonRow>
-          <Button
+          <ClickableWrapper
             typeOf={1}
             style={{ width: "50%" }}
             onClick={() => {
@@ -271,9 +289,10 @@ function Calculator() {
               setMode("none");
             }}
           >
-            RESET
-          </Button>
-          <Button
+            <Button>RESET</Button>
+          </ClickableWrapper>
+
+          <ClickableWrapper
             typeOf={2}
             style={{ width: "50%" }}
             onClick={() => {
@@ -301,8 +320,8 @@ function Calculator() {
               setStorage(0);
             }}
           >
-            =
-          </Button>
+            <Button>=</Button>
+          </ClickableWrapper>
         </ButtonRow>
       </Keypad>
     </Wrapper>

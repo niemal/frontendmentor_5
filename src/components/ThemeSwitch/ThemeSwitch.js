@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MainContext } from "../MainBody";
 import { useContext } from "react";
+import ClickableWrapper from "../ClickableWrapper";
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ const SwitchWrapper = styled.div`
   background-color: var(--color-toggle-background-theme-${(p) => p.theme});
 `;
 
-const OptionMark = styled.div`
+const OptionMark = styled.button`
   position: absolute;
   cursor: pointer;
   top: -32px;
@@ -44,6 +45,14 @@ const OptionMark = styled.div`
         return;
     }
   }};
+
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+
+  &:focus {
+    outline: 3px groove var(--color-offkey-background-theme-${(p) => p.theme});
+    outline-offset: 0px;
+  }
 `;
 
 const Ball = styled.div`
@@ -74,34 +83,39 @@ function ThemeSwitch() {
   return (
     <Wrapper>
       <Name theme={theme}>THEME</Name>
-      <SwitchWrapper theme={theme}>
-        <OptionMark
+      <SwitchWrapper theme={theme} aria-label={"Theme switcher navigation"}>
+        <ClickableWrapper
           entry={1}
           theme={theme}
           onClick={() => {
             setTheme(1);
           }}
+          aria-label={"Theme #1 button"}
         >
-          1
-        </OptionMark>
-        <OptionMark
+          <OptionMark>1</OptionMark>
+        </ClickableWrapper>
+
+        <ClickableWrapper
           entry={2}
           theme={theme}
           onClick={() => {
             setTheme(2);
           }}
+          aria-label={"Theme #2 button"}
         >
-          2
-        </OptionMark>
-        <OptionMark
+          <OptionMark>2</OptionMark>
+        </ClickableWrapper>
+
+        <ClickableWrapper
           entry={3}
           theme={theme}
           onClick={() => {
             setTheme(3);
           }}
+          aria-label={"Theme #3 button"}
         >
-          3
-        </OptionMark>
+          <OptionMark>3</OptionMark>
+        </ClickableWrapper>
 
         <Ball theme={theme} />
       </SwitchWrapper>

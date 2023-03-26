@@ -3,13 +3,19 @@ import { useContext, useState } from "react";
 import { MainContext } from "../MainBody";
 import { QUERIES } from "../constants";
 
-const Wrapper = styled.div`
+const Wrapper = styled.button`
   position: relative;
   cursor: pointer;
   width: 108px;
   height: 54px;
-  border-radius: 12px;
+  border-radius: 8px;
   transition: all 0.3s ease-in;
+
+  &:focus {
+    outline: 5px groove
+      var(--color-offkey-background-theme-${(p) => p.themestate});
+    outline-offset: 8px;
+  }
 
   @media ${QUERIES.phoneAndSmaller} {
     width: 60px;
@@ -102,7 +108,7 @@ function Button({ typeOf, children, ...props }) {
   const [press, setPress] = useState("0px");
 
   return (
-    <Wrapper {...props}>
+    <Wrapper themestate={theme} {...props}>
       <OuterButton
         theme={theme}
         typeOf={typeOf}
